@@ -19,7 +19,6 @@ There are 2 main routes to the JS app:
 ## Folders
 
 1. `src` - Contains the react app and all its components
-2. `public` - Contains all resources and static files including sample JSON data
 3. `transformApp` - Contains the python API
 
 ## Schema
