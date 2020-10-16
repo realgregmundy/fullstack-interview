@@ -1,68 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movies
 
-## Available Scripts
+## Local Setup
+### JS App
+1. Run `npm install`
+2. Run `npm run start`
+3. Visit `localhost:3000`. A sample movie detail page can be viewed at `localhost:3000/movie/tt0110357`
 
-In the project directory, you can run:
+### Python API
+1. Navigate to the `transformApp` directory: `cd transformApp`
+2. Install the necessary python packages: `pip3 install -r requirements.txt`
+3. Start up the API: `python3 api.py`
 
-### `yarn start`
+## Routes
+There are 2 main routes to the JS app:
+1. Root `/`: This should display a list of movies available
+2. Movie detail `/movie/${id}`: This displays details of the movie that matches `id`. This component currently pulls sample data from the python API.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Folders
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. `src` - Contains the react app and all its components
+2. `public` - Contains all resources and static files including sample JSON data
+3. `transformApp` - Contains the python API
 
-### `yarn test`
+## Schema
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The snippet below is the schema the React App expects the data to be in.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Movie",
+  "description": "Schema for individual movies",
+  "type": "object",
+  "properties": {
+    "contentType": {
+      "enum": [ "movie" ]
+    },
+    "id": {
+      "description": "IMDB ID of the movie",
+      "type": "string"
+    },
+    "movieTitle": {
+      "description": "Title of the movie",
+      "type": "string"
+    },
+    "movieYear": {
+      "description": "The year the movie was made",
+      "type": "string"
+    },
+    "movieLength": {
+      "description": "Length in minutes of the movie",
+      "type": "string"
+    },
+    "moviePlot": {
+      "description": "Short description/plot of the movie",
+      "type": "string"
+    },
+    "moviePoster": {
+      "description": "Poster image of the movie",
+      "type": "string"
+    },
+  },
+  "required": [ "contentType", "id", "movieTitle", "movieYear", "movieLength" ]
+}
+```
