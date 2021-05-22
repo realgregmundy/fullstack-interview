@@ -10,7 +10,7 @@ const MovieList = (props) => {
 				updateMovieList(data);
 			})
 			.catch((err) => console.log(err));
-	});
+	}, []);
 
 	return (
 		<ul style={{ marginLeft: '0px' }}>
