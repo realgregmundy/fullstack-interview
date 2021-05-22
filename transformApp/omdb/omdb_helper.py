@@ -51,9 +51,9 @@ class OMDBHelper:
       })
 
 
-    def get_movie_list(self) -> list:
+    def get_movie_list(self, search_string: str = 'star+wars') -> list:
       try:
-        query = f'{self.omdb_base_url}/?apikey={self.omdb_api_key}&s=star+wars'
+        query = f'{self.omdb_base_url}/?apikey={self.omdb_api_key}&s={search_string}'
         resp = requests.get(query)
         return self._createMovieList(resp.json())
       except Exception as e:

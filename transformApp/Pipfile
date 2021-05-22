@@ -9,6 +9,10 @@ Flask-Cors = "==3.0.9"
 requests = "*"
 
 [dev-packages]
+pytest = "*"
+pycodestyle = "*"
+autopep8 = "*"
+expects = "*"
 
 [requires]
 python_version = "3.8"

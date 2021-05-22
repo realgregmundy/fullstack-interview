@@ -1,7 +1,7 @@
 import requests
 import flask
 from flask_cors import CORS, cross_origin
-from omdb_helper import OMDBHelper
+from omdb import OMDBHelper
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
